@@ -12,3 +12,55 @@
 
 <%= link_to 'Edit', edit_playlist_path(@playlist) %> |
 <%= link_to 'Back', playlists_path %>
+
+
+<%= form_with(model: [@playlist, Song.new], local: true) do |form| %>
+
+<div class="field">
+  <%= form.label :artist %>
+  <%= form.text_field :artist %>
+</div>
+
+<div class="field">
+  <%= form.label :name %>
+  <%= form.text_field :name  %>
+
+
+
+</div>
+
+<div class="actions">
+  <%= form.submit %>
+</div>
+
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Artist</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+
+    <% @song.each do |song| %>
+  <tr>
+    <td>  <%= song.artist  %> </td>
+    <td>  <%= song.name  %> </td>
+    <td><%= link_to 'Destroy', playlist_song_path(@playlist, song), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
+
+  </tr>
+
+     <% end %>
+</table>
+
+
+
+
+
+
+
+</table>

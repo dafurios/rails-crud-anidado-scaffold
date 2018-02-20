@@ -11,6 +11,7 @@ class PlaylistsController < ApplicationController
   # GET /playlists/1.json
   def show
     @user
+    @song = @playlist.songs
   end
 
   # GET /playlists/new
@@ -21,6 +22,8 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists/1/edit
   def edit
+    @users = User.all.collect{|x| [x.name, x.id]}
+
   end
 
   # POST /playlists
